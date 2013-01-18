@@ -11,7 +11,8 @@ if [ -f ${TMP} ]; then
 fi
 
 export LANG=C
-grep "/login/" ${LOG}.`date +"%Y%m%d"`|grep `date +"%d/%h/%Y:%H"`|awk '{print $1}'|sort|uniq -c|awk '{if($1>10){print $0}}' > ${TMP}
+date +"%Y/%m/%d:%H:%M:%S" > ${TMP}
+grep "/login/" ${LOG}.`date +"%Y%m%d"`|grep `date +"%d/%h/%Y:%H"`|awk '{print $1}'|sort|uniq -c|awk '{if($1>10){print $0}}' >> ${TMP}
 
 if [ `cat ${TMP}|wc -c` -gt 0 ]; then
  cat ${TMP}|mail -s ${SUBJECT} ${EMAIL};
