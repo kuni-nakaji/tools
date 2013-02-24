@@ -128,9 +128,16 @@ ntpq -p
 # ----------------------------------------------
 
 # ----------------------------------------------
-# 10. [Nifty]Nifty monitor Setting
+# 10. [ALL]logwatch
 # ----------------------------------------------
-echo '###### 10.Nifty Monitor Setting ######'
+echo '###### 10.logwatch Setting ######'
+yum -y install logwatch
+
+
+# ----------------------------------------------
+# 11. [Nifty]Nifty monitor Setting
+# ----------------------------------------------
+echo '###### 11.Nifty Monitor Setting ######'
 
 SNMP_FILE='/etc/snmp/snmpd.conf'
 yum -y install net-snmp
@@ -154,19 +161,19 @@ cat $SNMP_FILE $ADD_TMP > $TMP_FILE
 service snmpd start
 
 # ----------------------------------------------
-# 11. [Nifty]Security tool
+# 12. [Nifty]Security tool
 # ----------------------------------------------
-echo '###### 11.Security tool ######'
+echo '###### 12.Security tool ######'
 
 yum -y install nmap
 
 # ----------------------------------------------
-# 12. [Nifty]LDAP
+# 13. [Nifty]LDAP
 #   need to set FW on Bit-isle
 #      180.214.43.170
 #      180.214.43.176
 # ----------------------------------------------
-echo '###### 12.LDAP ######'
+echo '###### 13.LDAP ######'
 
 yum -y install openldap-clients.x86_64 pam_ldap nss-pam-ldapd
 cp -p /etc/ldap.conf /etc/ldap.conf.`date '+%Y%m%d'`
@@ -244,9 +251,9 @@ yum remove openldap-clients
 cat /etc/ldap.conf|grep description
 
 # ----------------------------------------------
-# 13. [Nifty]Ganglia
+# 14. [Nifty]Ganglia
 # ----------------------------------------------
-echo '###### 13.Ganglia ######'
+echo '###### 14.Ganglia ######'
 
 ## Check Python file
 find /home -name *.pyc
